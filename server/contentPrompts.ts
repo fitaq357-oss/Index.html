@@ -7,6 +7,7 @@ type ContentPromptInput = {
   topic: string;
   audience: string;
   tone: string;
+  style: string;
   brief?: string;
 };
 
@@ -17,12 +18,14 @@ Content pillar: ${input.pillar}
 Topic: ${input.topic}
 Audience: ${input.audience}
 Tone: ${input.tone}
+Writing style: ${input.style}
 Additional brief: ${input.brief || "No extra brief provided."}
 
 Output rules:
 - Write in a natural Urdu-English mix using Roman Urdu for Urdu phrases and English for industry terms.
 - Do not write an English-only response.
-- Use a confident, helpful creator voice. Avoid generic motivational filler.
+- Follow the requested tone and writing style closely; it should sound like a real creator, not a generic AI template.
+- Use conversational rhythm, concrete language and varied sentence length. Avoid generic motivational filler, forced emojis, and robotic transitions.
 - Make the opening immediately useful and specific.
 - Match the requested ${input.platform} platform and ${input.format} format.
 - Return the finished content only, with clean line breaks and no explanation about your process.`;

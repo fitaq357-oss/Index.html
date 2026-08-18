@@ -17,6 +17,24 @@ export const CONTENT_STATUSES = ["Idea", "Draft", "Ready", "Published"] as const
 
 export const CONTENT_FORMATS = ["Caption", "Hook", "Script", "Post Copy"] as const;
 
+export const TONE_PRESETS = [
+  "Helpful & clear",
+  "Warm & conversational",
+  "Confident & expert",
+  "Bold & direct",
+  "Calm & thoughtful",
+  "Playful & energetic",
+] as const;
+
+export const WRITING_STYLE_PRESETS = [
+  "Natural everyday voice",
+  "Short punchy sentences",
+  "Story-led with a personal touch",
+  "Step-by-step teaching",
+  "Framework or list-based",
+  "Founder-style opinion",
+] as const;
+
 export type ContentPillar = (typeof CONTENT_PILLARS)[number];
 export type ContentPlatform = (typeof CONTENT_PLATFORMS)[number];
 export type ContentStatus = (typeof CONTENT_STATUSES)[number];

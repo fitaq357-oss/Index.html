@@ -14,3 +14,6 @@
 - [x] Verify desktop and mobile layouts visually before delivery.
 - [x] Add pillar-specific sub-topics and strategy guidance while keeping the four required pillar labels fixed.
 - [x] Fix weekly calendar navigation so previous and next controls move through actual weeks.
+- [x] Add selectable tone presets and a custom tone field to the AI Content Generator.
+- [x] Add writing style presets and custom style guidance for more natural brand-aligned posts.
+- [x] Update prompt tests and verify the new generator controls.

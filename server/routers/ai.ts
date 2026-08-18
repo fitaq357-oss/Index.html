@@ -35,6 +35,7 @@ export const aiRouter = router({
     topic: z.string().trim().min(3).max(500),
     audience: z.string().trim().min(3).max(400),
     tone: z.string().trim().min(3).max(100),
+    style: z.string().trim().min(3).max(400),
     brief: z.string().trim().max(1000).optional(),
   })).mutation(async ({ input }) => {
     const response = await invokeLLM({

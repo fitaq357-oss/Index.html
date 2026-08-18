@@ -23,6 +23,7 @@ describe("AI content workflows", () => {
       topic: "AI onboarding workflow",
       audience: "Freelancers",
       tone: "Helpful",
+      style: "Natural everyday voice",
     });
     expect(result.content).toContain("AI workflow");
     expect(mocks.invokeLLM).toHaveBeenCalledWith(expect.objectContaining({ model: "gpt-5-mini" }));

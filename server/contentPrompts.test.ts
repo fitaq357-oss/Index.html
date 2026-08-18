@@ -19,9 +19,12 @@ describe("AI prompt builders", () => {
       topic: "AI workflow for freelancers",
       audience: "Freelancers learning AI",
       tone: "Helpful",
+      style: "Natural everyday voice",
     });
     expect(prompt).toContain("Roman Urdu");
     expect(prompt).toContain("Do not write an English-only response.");
+    expect(prompt).toContain("Writing style: Natural everyday voice");
+    expect(prompt).toContain("real creator");
   });
 
   it("does not present trend directions as verified real-time facts", () => {
@@ -29,4 +32,3 @@ describe("AI prompt builders", () => {
     expect(prompt).toContain("directions rather than verified real-time facts");
   });
 });
-
