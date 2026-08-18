@@ -29,8 +29,8 @@
 - [x] Add selectable custom male and female voice options with voiceover style direction.
 - [x] Strengthen reel production briefs with lip-sync, camera-angle, motion, and sound-effect requirements.
 - [ ] Generate and attach a dynamic male Social Media Management demo reel with voice, sound effects, and multiple camera angles.
-- [ ] Set the user-approved reminder or automatic delivery approach for the quota-reset reel generation.
-- [ ] Export the current Content Pilot project to a GitHub repository.
-- [ ] Guide the user to a compatible full-stack live hosting route instead of GitHub Pages for backend, database, and AI features.
-- [ ] Export Content Pilot to the user's GitHub portfolio repository after GitHub login and repository name confirmation.
-- [ ] Guide the user to publish the full app through Manus hosting after export.
+- [x] Set the user-approved reminder or automatic delivery approach for the quota-reset reel generation.
+- [x] Export the current Content Pilot project to a GitHub repository.
+- [x] Guide the user to a compatible full-stack live hosting route instead of GitHub Pages for backend, database, and AI features.
+- [x] Export Content Pilot to the user's GitHub portfolio repository after GitHub login and repository name confirmation.
+- [x] Guide the user to publish the full app through Manus hosting after export.
