@@ -17,3 +17,5 @@
 - [x] Add selectable tone presets and a custom tone field to the AI Content Generator.
 - [x] Add writing style presets and custom style guidance for more natural brand-aligned posts.
 - [x] Update prompt tests and verify the new generator controls.
+- [x] Add a simple in-app Content Studio use guide with step-by-step instructions.
+- [x] Add a clearer generated content preview that shows how output looks for the selected platform before saving.
