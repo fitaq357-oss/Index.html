@@ -1,6 +1,6 @@
 import { and, desc, eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { contentItems, contentStrategies, InsertUser, researchReports, users } from "../drizzle/schema";
+import { characterProfiles, contentItems, contentStrategies, InsertUser, researchReports, users } from "../drizzle/schema";
 import type { ContentFormat, ContentPillar, ContentPlatform, ContentStatus } from "../shared/contentConfig";
 import { ENV } from "./_core/env";
 
@@ -42,5 +42,10 @@ export async function saveStrategy(userId: number, strategy: { targetAudience: s
   await db.insert(contentStrategies).values(values).onDuplicateKeyUpdate({ set: { ...values, updatedAt: new Date() } });
 }
 export async function getStrategy(userId: number) { const db = await requireDb(); const result = await db.select().from(contentStrategies).where(eq(contentStrategies.userId, userId)).limit(1); return result[0]; }
+export async function saveCharacterProfile(userId: number, profile: { name: string; identitySummary: string; appearance: string; wardrobe: string; voiceoverDirection: string }) {
+  const db = await requireDb(); const values = { userId, ...profile };
+  await db.insert(characterProfiles).values(values).onDuplicateKeyUpdate({ set: { ...values, updatedAt: new Date() } });
+}
+export async function getCharacterProfile(userId: number) { const db = await requireDb(); const result = await db.select().from(characterProfiles).where(eq(characterProfiles.userId, userId)).limit(1); return result[0]; }
 export async function saveResearchReport(userId: number, report: { pillar: ContentPillar; audience: string; focus?: string; report: string }) { const db = await requireDb(); await db.insert(researchReports).values({ userId, ...report }); }
 export async function listResearchReports(userId: number) { const db = await requireDb(); return db.select().from(researchReports).where(eq(researchReports.userId, userId)).orderBy(desc(researchReports.createdAt)); }

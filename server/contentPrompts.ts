@@ -60,6 +60,8 @@ type ReelPromptInput = {
   duration: "15 seconds" | "30 seconds" | "45 seconds";
   style: string;
   audience: string;
+  characterProfile?: string;
+  voiceoverDirection?: string;
 };
 
 export function buildReelPrompt(input: ReelPromptInput) {
@@ -70,13 +72,16 @@ Reel topic: ${input.topic}
 Target audience: ${input.audience}
 Target duration: ${input.duration}
 Visual direction: ${input.style}
+Lead character profile: ${input.characterProfile || "No recurring character requested."}
+Voiceover direction: ${input.voiceoverDirection || "Use a clear, natural creator narration."}
 
 Build an immediately usable reel production brief in Urdu-English Roman Urdu mix. Use these headings exactly:
 1. Hook (one spoken opening line)
 2. Voiceover Script (timed sections matching ${input.duration})
 3. Scene Plan (3 to 5 short camera/action scenes)
 4. On-screen Caption Cues (short optional captions)
-5. Post Caption (a concise social caption with a gentle CTA)
+5. Voiceover Direction (a short performance direction for the selected voice)
+6. Post Caption (a concise social caption with a gentle CTA)
 
-Keep it clear, practical and natural. Avoid generic AI phrases, invented statistics, on-screen brand names, and forced emojis.`;
+Keep it clear, practical and natural. Use the same lead character identity, appearance and wardrobe across every planned scene when a profile is provided. Avoid generic AI phrases, invented statistics, on-screen brand names, and forced emojis.`;
 }

@@ -4,6 +4,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { aiRouter } from "./routers/ai";
 import { contentRouter } from "./routers/content";
+import { characterRouter } from "./routers/character";
 import { strategyRouter } from "./routers/strategy";
 
 export const appRouter = router({
@@ -17,6 +18,7 @@ export const appRouter = router({
     }),
   }),
   content: contentRouter,
+  character: characterRouter,
   strategy: strategyRouter,
   ai: aiRouter,
 });

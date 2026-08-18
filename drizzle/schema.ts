@@ -47,6 +47,21 @@ export const contentItems = mysqlTable(
   ],
 );
 
+export const characterProfiles = mysqlTable(
+  "characterProfiles",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId").notNull().unique().references(() => users.id, { onDelete: "cascade" }),
+    name: varchar("name", { length: 120 }).notNull(),
+    identitySummary: text("identitySummary").notNull(),
+    appearance: text("appearance").notNull(),
+    wardrobe: text("wardrobe").notNull(),
+    voiceoverDirection: text("voiceoverDirection").notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  (table) => [index("characterProfiles_userId_idx").on(table.userId)],
+);
+
 export const researchReports = mysqlTable(
   "researchReports",
   {
@@ -65,4 +80,5 @@ export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 export type ContentItem = typeof contentItems.$inferSelect;
 export type ContentStrategy = typeof contentStrategies.$inferSelect;
+export type CharacterProfile = typeof characterProfiles.$inferSelect;
 export type ResearchReport = typeof researchReports.$inferSelect;

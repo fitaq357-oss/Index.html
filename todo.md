@@ -22,3 +22,6 @@
 - [x] Add an AI Reel Generator workspace with reel brief, hook, duration, and style controls.
 - [x] Add AI-generated Social Media Management reel script, scene plan, and caption workflow.
 - [x] Generate and attach one demo Social Media Management reel for review.
+- [x] Add a reusable consistent-character profile to the AI Reels Generator.
+- [x] Add character details and voiceover direction to the AI reel planning workflow.
+- [x] Generate and attach a Social Media Management demo reel with the specified male character and audio voiceover.
