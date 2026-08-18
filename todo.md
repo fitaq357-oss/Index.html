@@ -25,3 +25,7 @@
 - [x] Add a reusable consistent-character profile to the AI Reels Generator.
 - [x] Add character details and voiceover direction to the AI reel planning workflow.
 - [x] Generate and attach a Social Media Management demo reel with the specified male character and audio voiceover.
+- [x] Convert the single character profile into a multiple-profile character library.
+- [x] Add selectable custom male and female voice options with voiceover style direction.
+- [x] Strengthen reel production briefs with lip-sync, camera-angle, motion, and sound-effect requirements.
+- [ ] Generate and attach a dynamic male Social Media Management demo reel with voice, sound effects, and multiple camera angles.

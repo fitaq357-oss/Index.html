@@ -41,10 +41,13 @@ describe("AI prompt builders", () => {
       audience: "Freelancers",
       characterProfile: "Name: Ayaan. Appearance: short black hair and trimmed beard.",
       voiceoverDirection: "Clear confident male narration.",
+      voiceName: "Charon",
     });
     expect(prompt).toContain("Voiceover Script");
     expect(prompt).toContain("Roman Urdu mix");
     expect(prompt).toContain("Name: Ayaan");
     expect(prompt).toContain("Voiceover Direction");
+    expect(prompt).toContain("Selected voice: Charon");
+    expect(prompt).toContain("lip movement naturally");
   });
 });

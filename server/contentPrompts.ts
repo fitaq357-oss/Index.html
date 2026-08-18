@@ -62,6 +62,7 @@ type ReelPromptInput = {
   audience: string;
   characterProfile?: string;
   voiceoverDirection?: string;
+  voiceName?: string;
 };
 
 export function buildReelPrompt(input: ReelPromptInput) {
@@ -74,6 +75,7 @@ Target duration: ${input.duration}
 Visual direction: ${input.style}
 Lead character profile: ${input.characterProfile || "No recurring character requested."}
 Voiceover direction: ${input.voiceoverDirection || "Use a clear, natural creator narration."}
+Selected voice: ${input.voiceName || "Charon"}
 
 Build an immediately usable reel production brief in Urdu-English Roman Urdu mix. Use these headings exactly:
 1. Hook (one spoken opening line)
@@ -83,5 +85,11 @@ Build an immediately usable reel production brief in Urdu-English Roman Urdu mix
 5. Voiceover Direction (a short performance direction for the selected voice)
 6. Post Caption (a concise social caption with a gentle CTA)
 
-Keep it clear, practical and natural. Use the same lead character identity, appearance and wardrobe across every planned scene when a profile is provided. Avoid generic AI phrases, invented statistics, on-screen brand names, and forced emojis.`;
+Production-quality requirements:
+- Match the lead character's lip movement naturally to the complete voiceover; do not use a still or frozen talking head.
+- Plan at least 3 noticeably different camera angles: a tight hook to camera, an over-the-shoulder workflow shot, and a moving medium or tracking shot.
+- Specify 2 subtle sound effects that fit the actions, such as a phone notification chime, keyboard taps, page swipe, or gentle transition whoosh. Keep music optional and low under the narration.
+- Keep character identity, appearance, voice, and wardrobe consistent in every scene.
+
+Keep it clear, practical and natural. Avoid generic AI phrases, invented statistics, on-screen brand names, and forced emojis.`;
 }

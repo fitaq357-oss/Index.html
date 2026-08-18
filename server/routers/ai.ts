@@ -55,6 +55,7 @@ export const aiRouter = router({
     audience: z.string().trim().min(3).max(400),
     characterProfile: z.string().trim().max(2000).optional(),
     voiceoverDirection: z.string().trim().max(700).optional(),
+    voiceName: z.string().trim().max(80).optional(),
   })).mutation(async ({ input }) => {
     const response = await invokeLLM({
       model: "gpt-5-mini",

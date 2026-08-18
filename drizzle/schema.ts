@@ -1,4 +1,4 @@
-import { index, int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { boolean, index, int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 import { CONTENT_FORMATS, CONTENT_PILLARS, CONTENT_PLATFORMS, CONTENT_STATUSES } from "../shared/contentConfig";
 
 export const users = mysqlTable("users", {
@@ -51,12 +51,14 @@ export const characterProfiles = mysqlTable(
   "characterProfiles",
   {
     id: int("id").autoincrement().primaryKey(),
-    userId: int("userId").notNull().unique().references(() => users.id, { onDelete: "cascade" }),
+    userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
     name: varchar("name", { length: 120 }).notNull(),
     identitySummary: text("identitySummary").notNull(),
     appearance: text("appearance").notNull(),
     wardrobe: text("wardrobe").notNull(),
+    voiceName: varchar("voiceName", { length: 80 }).notNull().default("Charon"),
     voiceoverDirection: text("voiceoverDirection").notNull(),
+    isDefault: boolean("isDefault").notNull().default(false),
     updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   },
   (table) => [index("characterProfiles_userId_idx").on(table.userId)],

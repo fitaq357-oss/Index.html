@@ -42,10 +42,11 @@ export async function saveStrategy(userId: number, strategy: { targetAudience: s
   await db.insert(contentStrategies).values(values).onDuplicateKeyUpdate({ set: { ...values, updatedAt: new Date() } });
 }
 export async function getStrategy(userId: number) { const db = await requireDb(); const result = await db.select().from(contentStrategies).where(eq(contentStrategies.userId, userId)).limit(1); return result[0]; }
-export async function saveCharacterProfile(userId: number, profile: { name: string; identitySummary: string; appearance: string; wardrobe: string; voiceoverDirection: string }) {
-  const db = await requireDb(); const values = { userId, ...profile };
-  await db.insert(characterProfiles).values(values).onDuplicateKeyUpdate({ set: { ...values, updatedAt: new Date() } });
-}
-export async function getCharacterProfile(userId: number) { const db = await requireDb(); const result = await db.select().from(characterProfiles).where(eq(characterProfiles.userId, userId)).limit(1); return result[0]; }
+export type CharacterProfileInput = { name: string; identitySummary: string; appearance: string; wardrobe: string; voiceName: string; voiceoverDirection: string; isDefault?: boolean };
+export async function listCharacterProfiles(userId: number) { const db = await requireDb(); return db.select().from(characterProfiles).where(eq(characterProfiles.userId, userId)).orderBy(desc(characterProfiles.isDefault), desc(characterProfiles.updatedAt)); }
+export async function createCharacterProfile(userId: number, profile: CharacterProfileInput) { const db = await requireDb(); const result = await db.insert(characterProfiles).values({ userId, ...profile, isDefault: profile.isDefault ?? false }); return Number(result[0].insertId); }
+export async function updateCharacterProfile(userId: number, id: number, profile: CharacterProfileInput) { const db = await requireDb(); await db.update(characterProfiles).set({ ...profile, isDefault: profile.isDefault ?? false, updatedAt: new Date() }).where(and(eq(characterProfiles.id, id), eq(characterProfiles.userId, userId))); }
+export async function setDefaultCharacterProfile(userId: number, id: number) { const db = await requireDb(); await db.update(characterProfiles).set({ isDefault: false }).where(eq(characterProfiles.userId, userId)); await db.update(characterProfiles).set({ isDefault: true }).where(and(eq(characterProfiles.id, id), eq(characterProfiles.userId, userId))); }
+export async function deleteCharacterProfile(userId: number, id: number) { const db = await requireDb(); await db.delete(characterProfiles).where(and(eq(characterProfiles.id, id), eq(characterProfiles.userId, userId))); }
 export async function saveResearchReport(userId: number, report: { pillar: ContentPillar; audience: string; focus?: string; report: string }) { const db = await requireDb(); await db.insert(researchReports).values({ userId, ...report }); }
 export async function listResearchReports(userId: number) { const db = await requireDb(); return db.select().from(researchReports).where(eq(researchReports.userId, userId)).orderBy(desc(researchReports.createdAt)); }
