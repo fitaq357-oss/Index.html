@@ -4,6 +4,7 @@ import Calendar from "@/pages/Calendar";
 import Home from "@/pages/Home";
 import IdeaBank from "@/pages/IdeaBank";
 import Research from "@/pages/Research";
+import Reels from "@/pages/Reels";
 import Strategy from "@/pages/Strategy";
 import Studio from "@/pages/Studio";
 import { Route, Switch } from "wouter";
@@ -12,7 +13,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 function Router() {
-  return <Switch><Route path="/" component={Home} /><Route path="/strategy" component={Strategy} /><Route path="/research" component={Research} /><Route path="/calendar" component={Calendar} /><Route path="/studio" component={Studio} /><Route path="/ideas" component={IdeaBank} /><Route component={Home} /></Switch>;
+  return <Switch><Route path="/" component={Home} /><Route path="/strategy" component={Strategy} /><Route path="/research" component={Research} /><Route path="/calendar" component={Calendar} /><Route path="/reels" component={Reels} /><Route path="/studio" component={Studio} /><Route path="/ideas" component={IdeaBank} /><Route component={Home} /></Switch>;
 }
 
 function App() {

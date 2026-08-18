@@ -53,3 +53,30 @@ Create a practical research brief in Urdu-English mix using Roman Urdu for Urdu 
 
 Avoid claiming live statistics or breaking news. Keep every suggestion actionable for YouTube, Instagram, TikTok, Facebook, and LinkedIn.`;
 }
+
+type ReelPromptInput = {
+  pillar: ContentPillar;
+  topic: string;
+  duration: "15 seconds" | "30 seconds" | "45 seconds";
+  style: string;
+  audience: string;
+};
+
+export function buildReelPrompt(input: ReelPromptInput) {
+  return `You are a short-form reel strategist for a South Asian creator who communicates in natural Urdu-English Roman Urdu mix.
+
+Content pillar: ${input.pillar}
+Reel topic: ${input.topic}
+Target audience: ${input.audience}
+Target duration: ${input.duration}
+Visual direction: ${input.style}
+
+Build an immediately usable reel production brief in Urdu-English Roman Urdu mix. Use these headings exactly:
+1. Hook (one spoken opening line)
+2. Voiceover Script (timed sections matching ${input.duration})
+3. Scene Plan (3 to 5 short camera/action scenes)
+4. On-screen Caption Cues (short optional captions)
+5. Post Caption (a concise social caption with a gentle CTA)
+
+Keep it clear, practical and natural. Avoid generic AI phrases, invented statistics, on-screen brand names, and forced emojis.`;
+}

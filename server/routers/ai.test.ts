@@ -36,4 +36,12 @@ describe("AI content workflows", () => {
     await caller.research({ pillar: "Freelance Business", audience: "New freelancers", focus: "Client systems" });
     expect(mocks.saveResearchReport).toHaveBeenCalledWith(7, expect.objectContaining({ pillar: "Freelance Business", audience: "New freelancers" }));
   });
+
+  it("generates a reel plan for the selected content pillar", async () => {
+    mocks.invokeLLM.mockResolvedValueOnce({ choices: [{ message: { content: "## Hook\nRandom posting band karein." } }] });
+    const caller = aiRouter.createCaller(ctx);
+    const result = await caller.reelPlan({ pillar: "Social Media Management", topic: "Content workflow", duration: "30 seconds", style: "Cinematic educational", audience: "Freelancers" });
+    expect(result.plan).toContain("Hook");
+    expect(mocks.invokeLLM.mock.calls.at(-1)?.[0].messages[1].content).toContain("Reel topic: Content workflow");
+  });
 });

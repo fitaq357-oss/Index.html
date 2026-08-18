@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CONTENT_PILLARS, CONTENT_PLATFORMS, CONTENT_STATUSES } from "../shared/contentConfig";
-import { buildContentPrompt, buildResearchPrompt } from "./contentPrompts";
+import { buildContentPrompt, buildReelPrompt, buildResearchPrompt } from "./contentPrompts";
 
 describe("content platform configuration", () => {
   it("uses the required pillars, platforms, and post statuses", () => {
@@ -30,5 +30,17 @@ describe("AI prompt builders", () => {
   it("does not present trend directions as verified real-time facts", () => {
     const prompt = buildResearchPrompt({ pillar: "Content Pipeline", audience: "Freelance creators" });
     expect(prompt).toContain("directions rather than verified real-time facts");
+  });
+
+  it("creates a Roman Urdu-English reel production prompt", () => {
+    const prompt = buildReelPrompt({
+      pillar: "Social Media Management",
+      topic: "Simple content system",
+      duration: "30 seconds",
+      style: "Cinematic educational",
+      audience: "Freelancers",
+    });
+    expect(prompt).toContain("Voiceover Script");
+    expect(prompt).toContain("Roman Urdu mix");
   });
 });

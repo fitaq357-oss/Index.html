@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   CalendarDays,
   ChevronRight,
+  Clapperboard,
   Compass,
   FolderHeart,
   LayoutDashboard,
@@ -21,6 +22,7 @@ const menuItems = [
   { icon: Compass, label: "Strategy", path: "/strategy" },
   { icon: Search, label: "Research", path: "/research" },
   { icon: CalendarDays, label: "Calendar", path: "/calendar" },
+  { icon: Clapperboard, label: "AI Reels", path: "/reels" },
   { icon: PenLine, label: "Content Studio", path: "/studio" },
   { icon: FolderHeart, label: "Idea Bank", path: "/ideas" },
 ];

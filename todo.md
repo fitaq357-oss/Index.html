@@ -19,3 +19,6 @@
 - [x] Update prompt tests and verify the new generator controls.
 - [x] Add a simple in-app Content Studio use guide with step-by-step instructions.
 - [x] Add a clearer generated content preview that shows how output looks for the selected platform before saving.
+- [x] Add an AI Reel Generator workspace with reel brief, hook, duration, and style controls.
+- [x] Add AI-generated Social Media Management reel script, scene plan, and caption workflow.
+- [x] Generate and attach one demo Social Media Management reel for review.

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { invokeLLM } from "../_core/llm";
 import { saveResearchReport } from "../db";
-import { buildContentPrompt, buildResearchPrompt } from "../contentPrompts";
+import { buildContentPrompt, buildReelPrompt, buildResearchPrompt } from "../contentPrompts";
 import { router, protectedProcedure } from "../_core/trpc";
 import { CONTENT_FORMATS, CONTENT_PILLARS, CONTENT_PLATFORMS } from "../../shared/contentConfig";
 
@@ -46,5 +46,21 @@ export const aiRouter = router({
       ],
     });
     return { content: responseText(response) };
+  }),
+  reelPlan: protectedProcedure.input(z.object({
+    pillar: z.enum(CONTENT_PILLARS),
+    topic: z.string().trim().min(3).max(500),
+    duration: z.enum(["15 seconds", "30 seconds", "45 seconds"]),
+    style: z.string().trim().min(3).max(180),
+    audience: z.string().trim().min(3).max(400),
+  })).mutation(async ({ input }) => {
+    const response = await invokeLLM({
+      model: "gpt-5-mini",
+      messages: [
+        { role: "system", content: "You write concise, platform-native reel scripts and production plans." },
+        { role: "user", content: buildReelPrompt(input) },
+      ],
+    });
+    return { plan: responseText(response) };
   }),
 });
